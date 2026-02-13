@@ -60,7 +60,7 @@ body {
     padding: 30px 20px;
     
     /* CAMBIOS PARA TRANSPARENCIA */
-    background: rgba(255, 255, 255, 0.4); /* Fondo mucho más transparente */
+    background: rgba(255, 255, 255, 0.6); /* Fondo mucho más transparente */
     backdrop-filter: blur(2px); /* Desenfoque sutil para que se vean los corazones */
     -webkit-backdrop-filter: blur(5px);
     
@@ -131,18 +131,36 @@ body {
 }
 .mute-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    display: none;
-    z-index: 1000;
-    padding: 10px 18px;
-    font-size: 0.8rem;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #d81b60;
+    bottom: 20px; /* Distancia desde abajo */
+    left: 20px;   /* Distancia desde la izquierda */
+    display: none; /* Se activa con tu JS al iniciar */
+    z-index: 3000; /* Por encima de todo */
+    
+    /* Estilo visual */
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    border: 1px solid #ffccd5;
+    color: #d81b60;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(216, 27, 96, 0.3);
+    border-radius: 50px; /* Forma de píldora */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+    /* Evitar que se seleccione el texto al tocar rápido */
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.3s ease;
 }
+
+.mute-btn:active {
+    transform: scale(0.9); /* Efecto de pulsación al tocarlo */
+    background: rgba(255, 255, 255, 1);
+}
+
 
 .heart, .sparkle {
     position: fixed;
@@ -216,7 +234,7 @@ body {
     </div>
 </div>
 
-<button class="mute-btn" onclick="toggleMute()">🔊 Música</button>
+<button class="mute-btn" onclick="toggleMute()">🔊</button>
 
 <audio id="musica" loop>
     <source src="carryyou.mp3" type="audio/mpeg">
@@ -244,11 +262,11 @@ function iniciarExperiencia() {
 function toggleMute() {
     if(!isMuted){
         musica.muted = true;
-        document.querySelector(".mute-btn").innerText = "🔇 Silenciado";
+        document.querySelector(".mute-btn").innerText = "🔇";
         isMuted = true;
     } else {
         musica.muted = false;
-        document.querySelector(".mute-btn").innerText = "🔊 Música";
+        document.querySelector(".mute-btn").innerText = "🔊";
         isMuted = false;
     }
 }
