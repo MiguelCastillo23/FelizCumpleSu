@@ -180,7 +180,55 @@ body {
     animation-timing-function: linear;
     animation-fill-mode: forwards;
 }
+.besos-btn {
+    display: block;
+    margin: 25px auto 10px auto;
+    padding: 12px 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    background: #e67e22; /* El naranja de la edad */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
 
+.besos-btn:active {
+    transform: scale(0.95);
+}
+
+/* Pantalla negra de la foto */
+#pantalla-beso {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 5000; /* Por encima de TODO */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease;
+}
+
+#pantalla-beso img {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 15px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+#pantalla-beso p {
+    color: white;
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+}
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -237,10 +285,14 @@ body {
             <br><br>
             Gracias por ser tú, por tu paciencia y por amarme así de bonito.
             <div class="age">Te amo infinito y más ♥</div>
+            <button class="besos-btn" onclick="mostrarBeso()">Recibir besitos 💋</button>
         </div>
     </div>
 </div>
-
+<div id="pantalla-beso" onclick="ocultarBeso()">
+    <img src="beso.jpeg" alt="Nuestro beso">
+    <p>¡Te amo mi chinita! ♥</p>
+</div>
 <button class="mute-btn" onclick="toggleMute()">🔊</button>
 
 <audio id="musica" loop>
@@ -329,7 +381,15 @@ function lanzarCorazones() {
     //     }, j * 300);
     // }
 }
+function mostrarBeso() {
+    const pantalla = document.getElementById("pantalla-beso");
+    pantalla.style.display = "flex";
+}
 
+function ocultarBeso() {
+    const pantalla = document.getElementById("pantalla-beso");
+    pantalla.style.display = "none";
+}
 // Limpiar intervalo al cerrar (opcional)
 window.addEventListener('beforeunload', () => {
     if (heartInterval) clearInterval(heartInterval);
