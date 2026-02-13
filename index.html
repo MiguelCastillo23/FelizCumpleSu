@@ -5,7 +5,7 @@
 <title>Feliz Cumpleaños Mi Amorcito 💖</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com');
 
 * {
     margin: 0;
@@ -17,223 +17,149 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff0f3;
 }
 
-/* Pantalla inicial - Tonos rosas y lavanda */
 #intro {
     position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-    color: #fff;
+    inset: 0;
+    background: linear-gradient(135deg, #ff8fa3 0%, #ffb3c1 100%);
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
     text-align: center;
     cursor: pointer;
-    transition: opacity 1.5s ease;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 2000;
+    padding: 20px;
+    animation: pulse 2s ease-in-out infinite;
 }
 
-#intro::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-/* Contenido principal - Paleta femenina rosa/dorado */
 #contenido {
     display: none;
     height: 100vh;
-    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 25%, #fff5f5 50%, #fff0e6 75%, #ffe4e1 100%);
-    color: #8b4513;
-    text-align: center;
+    width: 100vw;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffccd5 100%);
+    position: relative;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-#contenido::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(255, 218, 185, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(255, 240, 245, 0.3) 0%, transparent 50%);
-    pointer-events: none;
+    padding: 20px;
 }
 
 .container {
-    animation: fadeIn 2.5s ease-in-out;
+    animation: fadeIn 2s ease-in-out;
     position: relative;
     z-index: 10;
-    max-width: 800px;
-    padding: 60px 40px;
-    background: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    max-width: 450px;
+    max-height: 80vh;
+    padding: 35px 25px;
+    background: rgba(255, 255, 255, 0.75);
     border-radius: 30px;
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 182, 193, 0.3);
-    box-shadow: 
-        0 20px 60px rgba(255, 182, 193, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(231, 84, 128, 0.15);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Área del mensaje */
 .message {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    line-height: 1.8;
-    animation: fadeIn 2.5s ease-in-out;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #d4847c;
+    font-size: clamp(1.1rem, 4.5vw, 1.3rem);
+    line-height: 1.7;
+    color: #6b2d2d; /* Marrón rojizo para legibilidad */
+    text-align: justify; /* Contenido justificado */
+    overflow-y: auto;
+    width: 100%;
+    
+    /* Ocultar scrollbar en Chrome, Safari y Opera */
+    -webkit-overflow-scrolling: touch;
 }
 
+.message::-webkit-scrollbar {
+    display: none; /* Esto oculta el scroll en la mayoría de móviles */
+}
+
+/* Ocultar scrollbar en Firefox e IE */
+.message {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+/* Título Centrado */
 .message strong {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 2.6rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
     display: block;
-    margin-bottom: 30px;
-    color: #e75480;
-    text-shadow: 0 2px 20px rgba(231, 84, 128, 0.2);
-    background: linear-gradient(45deg, #e75480, #ff8fa3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin-bottom: 15px;
+    color: #d81b60;
+    line-height: 1.2;
+    text-align: center; /* Título siempre al centro */
+    text-transform: uppercase;
 }
 
+/* Edad Centrada */
 .age {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.3rem;
-    margin-top: 30px;
-    font-weight: 500;
-    color: #f4a460;
-    letter-spacing: 4px;
-    text-shadow: 0 2px 10px rgba(244, 164, 96, 0.2);
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(30px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-/* Corazones mejorados */
-.heart {
-    position: fixed;
-    font-size: 28px;
-    animation: float 8s linear infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.6));
-    pointer-events: none;
-    z-index: 5;
-}
-
-@keyframes float {
-    0% { 
-        transform: translateY(100vh) rotate(0deg) scale(0.5); 
-        opacity: 0; 
-    }
-    10% {
-        opacity: 1;
-        transform: translateY(90vh) rotate(36deg) scale(1);
-    }
-    90% {
-        opacity: 1;
-    }
-    100% { 
-        transform: translateY(-20vh) rotate(720deg) scale(0.3); 
-        opacity: 0; 
-    }
+    margin-top: 15px;
+    font-weight: 600;
+    color: #e67e22;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center; /* Edad siempre al centro */
+    width: 100%;
+    display: block;
 }
 
 .mute-btn {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
     display: none;
     z-index: 1000;
-}
-
-button {
-    padding: 12px 28px;
-    font-size: 0.9rem;
-    border: none;
+    padding: 10px 18px;
+    font-size: 0.8rem;
     border-radius: 50px;
-    cursor: pointer;
-    background: rgba(255, 182, 193, 0.3);
-    color: #d4847c;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 182, 193, 0.4);
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #d81b60;
+    font-weight: 600;
+    border: 1px solid #ffccd5;
 }
 
-button:hover {
-    background: rgba(255, 182, 193, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
-    color: #e75480;
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Animación de pulso suave para el intro */
 @keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.02);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
 }
 
-#intro {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-/* Destellos adicionales */
-.sparkle {
+.heart, .sparkle {
     position: fixed;
-    font-size: 20px;
-    animation: sparkleFloat 6s linear infinite;
     pointer-events: none;
-    z-index: 4;
+    z-index: 5;
+    animation: floatUp 7s linear forwards;
 }
 
-@keyframes sparkleFloat {
-    0% { 
-        transform: translateY(100vh) rotate(0deg); 
-        opacity: 0; 
-    }
-    15% {
-        opacity: 1;
-    }
-    85% {
-        opacity: 1;
-    }
-    100% { 
-        transform: translateY(-20vh) rotate(360deg); 
-        opacity: 0; 
-    }
+@keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
 }
 </style>
+
+
+
 </head>
 
 <body>
@@ -247,24 +173,23 @@ button:hover {
 <div id="contenido">
     <div class="container">
         <div class="message">
-            <strong>Feliz cumpleaños Mi Amor ❤️</strong>
-            Gracias por existir, por tu sonrisa,<br>
-            por tu ternura, por tu locura,<br><br>
-            por ser mi otra mitad, por ser esa mujer fuerte,<br><br>
-            luchadora, que si se cae llora, pero se levanta<br><br>
-            sin importar cuantos tropiezos más tenga,<br><br>
-            que ama como una niña chiquita, que se queja<br><br>
-            como una nena, que le gusta gritar y callar,<br><br>
-            llorar y reír, dormir y estar despierta, a esa<br><br>
-            nena que no termina de crecer aún, que siendo mi mayor<br><br>
-            pareciera ser menor que yo, para mi chinita preciosa,<br><br>
-            que no come cuando se siente triste y que<br><br>
-            cuando está conmigo hasta me quita de mi comida o bebida<br><br>
-            y nunca se llena, para esa nenita que le gusta gomitar,<br><br>
-            hacer drama, renegar, pelear...<br><br>
-            Eres mi persona favorita 🌎<br><br>
-            Te amo hoy y siempre ❤️
-            <div class="age">Feliz 23 Añitos mi amorcito</div>
+            <strong>Feliz 23 añitos Mi amorcito</strong>
+            Gracias por existir, por tu sonrisa,
+            por tu ternura, por tu locura,
+            por ser mi otra mitad, por ser esa mujer fuerte,
+            luchadora, que si se cae llora, pero se levanta
+            sin importar cuantos tropiezos más tenga,
+            que ama como una niña chiquita, que se queja
+            como una nena, que le gusta gritar y callar,
+            llorar y reír, dormir y estar despierta, a esa
+            nena que no termina de crecer aún, que siendo mi mayor
+            pareciera ser menor que yo, para mi chinita preciosa,
+            que no come cuando se siente triste y que
+            cuando está conmigo hasta me quita de mi comida o bebida
+            y nunca se llena, para esa nenita que le gusta gomitar,
+            hacer drama, renegar, pelear...
+            Eres mi persona favorita en el 🌎
+            <div class="age">Te amo infinito y más ♥</div>
         </div>
     </div>
 </div>
