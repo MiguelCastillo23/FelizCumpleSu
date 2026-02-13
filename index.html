@@ -40,37 +40,42 @@ body {
 }
 
 #contenido {
-    display: none;
-    height: 100vh;
-    width: 100vw;
+    display: none; /* Tu JS lo cambia a flex */
+    position: fixed; /* Cambiado de relative a fixed para bloquearlo a la pantalla */
+    top: 0;
+    left: 0;
+    height: 100%; /* Usa el 100% real disponible */
+    width: 100%;
     background: linear-gradient(135deg, #ffeef8 0%, #ffccd5 100%);
-    position: relative;
-    /* CENTRADO PERFECTO */
+    z-index: 1;
+    
+    /* CENTRADO ABSOLUTO */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0; /* Quitamos el padding para que no empuje la card */
-    margin: 0;
     overflow: hidden;
 }
 
 .container {
     animation: fadeIn 2s ease-in-out;
     position: relative;
-    z-index: 10;
-    width: 92%; /* Optimización para que no se vea pequeño en móvil */
+    z-index: 20;
+    width: 90%; 
     max-width: 450px;
-    max-height: 85vh; /* Un poco más alto para mejor lectura */
-    padding: 30px 20px;
+    max-height: 80vh; 
+    padding: 25px 20px;
     
-    /* CAMBIOS PARA TRANSPARENCIA */
-    background: rgba(255, 255, 255, 0.6); /* Fondo mucho más transparente */
-    backdrop-filter: blur(2px); /* Desenfoque sutil para que se vean los corazones */
-    -webkit-backdrop-filter: blur(5px);
+    /* Efecto de transparencia que pediste */
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
     
     border-radius: 30px;
     border: 1.5px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 10px 30px rgba(231, 84, 128, 0.1);
+    
+    /* Asegura que no tenga márgenes que lo muevan */
+    margin: auto; 
     display: flex;
     flex-direction: column;
 }
@@ -193,10 +198,10 @@ body {
         opacity: 0; 
     }
     15% {
-        opacity: 1; /* Aparece gradualmente */
+        opacity: 0.3; /* Aparece gradualmente */
     }
     85% {
-        opacity: 1; /* Se mantiene visible casi todo el camino */
+        opacity: 0.3; /* Se mantiene visible casi todo el camino */
     }
     100% { 
         /* Sube hasta -25vh para asegurar que salga por arriba completamente */
@@ -205,8 +210,6 @@ body {
     }
 }
 </style>
-
-
 
 </head>
 
@@ -278,7 +281,7 @@ function toggleMute() {
 function lanzarCorazones() {
     const emojis = ['♥'];
     
-    for(let i = 0; i < 25; i++) {
+    for(let i = 0; i < 10; i++) {
         setTimeout(() => {
             let heart = document.createElement("div");
             heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -308,23 +311,23 @@ function lanzarCorazones() {
         }, i * 200);
     }
     
-    for(let j = 0; j < 15; j++) {
-        setTimeout(() => {
-            let sparkle = document.createElement("div");
-            sparkle.innerHTML = '♥';
-            sparkle.classList.add("sparkle");
-            sparkle.style.left = Math.random() * 95 + "vw";
-            sparkle.style.fontSize = (Math.random() * 15 + 15) + "px";
-            sparkle.style.animationDuration = (Math.random() * 3 + 5) + "s";
-            document.body.appendChild(sparkle);
+    // for(let j = 0; j < 15; j++) {
+    //     setTimeout(() => {
+    //         let sparkle = document.createElement("div");
+    //         sparkle.innerHTML = '♥';
+    //         sparkle.classList.add("sparkle");
+    //         sparkle.style.left = Math.random() * 95 + "vw";
+    //         sparkle.style.fontSize = (Math.random() * 15 + 15) + "px";
+    //         sparkle.style.animationDuration = (Math.random() * 3 + 5) + "s";
+    //         document.body.appendChild(sparkle);
             
-            setTimeout(() => {
-                if (sparkle.parentNode) {
-                    sparkle.remove();
-                }
-            }, 10000);
-        }, j * 300);
-    }
+    //         setTimeout(() => {
+    //             if (sparkle.parentNode) {
+    //                 sparkle.remove();
+    //             }
+    //         }, 10000);
+    //     }, j * 300);
+    // }
 }
 
 // Limpiar intervalo al cerrar (opcional)
