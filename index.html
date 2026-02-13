@@ -198,10 +198,10 @@ body {
         opacity: 0; 
     }
     15% {
-        opacity: 0.3; /* Aparece gradualmente */
+        opacity: 0.2; /* Aparece gradualmente */
     }
     85% {
-        opacity: 0.3; /* Se mantiene visible casi todo el camino */
+        opacity: 0.2; /* Se mantiene visible casi todo el camino */
     }
     100% { 
         /* Sube hasta -25vh para asegurar que salga por arriba completamente */
@@ -281,12 +281,12 @@ function toggleMute() {
 function lanzarCorazones() {
     const emojis = ['♥'];
     
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 5; i++) {
         setTimeout(() => {
             let heart = document.createElement("div");
             heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
             heart.classList.add("heart");
-            
+
             // Posición horizontal aleatoria
             heart.style.left = Math.random() * 95 + "vw";
             
