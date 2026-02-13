@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz Cumpleaños Mi Amorcito 💖</title>
 
 <style>
@@ -53,16 +54,19 @@ body {
     animation: fadeIn 2s ease-in-out;
     position: relative;
     z-index: 10;
-    width: 100%;
+    width: 92%; /* Optimización para que no se vea pequeño en móvil */
     max-width: 450px;
-    max-height: 80vh;
-    padding: 35px 25px;
-    background: rgba(255, 255, 255, 0.75);
+    max-height: 85vh; /* Un poco más alto para mejor lectura */
+    padding: 30px 20px;
+    
+    /* CAMBIOS PARA TRANSPARENCIA */
+    background: rgba(255, 255, 255, 0.4); /* Fondo mucho más transparente */
+    backdrop-filter: blur(2px); /* Desenfoque sutil para que se vean los corazones */
+    -webkit-backdrop-filter: blur(5px);
+    
     border-radius: 30px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 15px 35px rgba(231, 84, 128, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(231, 84, 128, 0.1);
     display: flex;
     flex-direction: column;
 }
@@ -117,7 +121,14 @@ body {
     width: 100%;
     display: block;
 }
-
+.highlight {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #e67e22; /* El mismo naranja de la edad */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1.1rem; /* Un poco más grande para resaltar */
+}
 .mute-btn {
     position: fixed;
     top: 20px;
@@ -133,6 +144,16 @@ body {
     border: 1px solid #ffccd5;
 }
 
+.heart, .sparkle {
+    position: fixed;
+    bottom: -10vh; /* Base inicial fuera de pantalla */
+    pointer-events: none;
+    z-index: 5; /* Pasan por detrás del container (que es 10) */
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -143,18 +164,23 @@ body {
     50% { transform: scale(1.03); }
 }
 
-.heart, .sparkle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 5;
-    animation: floatUp 7s linear forwards;
-}
 
 @keyframes floatUp {
-    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    0% { 
+        transform: translateY(105vh) rotate(0deg) scale(0.5); 
+        opacity: 0; 
+    }
+    15% {
+        opacity: 1; /* Aparece gradualmente */
+    }
+    85% {
+        opacity: 1; /* Se mantiene visible casi todo el camino */
+    }
+    100% { 
+        /* Sube hasta -25vh para asegurar que salga por arriba completamente */
+        transform: translateY(-90vh) rotate(360deg) scale(1); 
+        opacity: 0; 
+    }
 }
 </style>
 
@@ -166,7 +192,9 @@ body {
 
 <!-- Pantalla inicial -->
 <div id="intro" onclick="iniciarExperiencia()">
-    Toca la pantalla para comenzar ❤️
+    ToKha la pHantHaYa p4ra KoMenSar Pe AlarK0<br>
+    (bromitha pe, luegho yoraz)<br>
+    ❤️
 </div>
 
 <!-- Contenido principal -->
@@ -174,21 +202,15 @@ body {
     <div class="container">
         <div class="message">
             <strong>Feliz 23 añitos Mi amorcito</strong>
-            Gracias por existir, por tu sonrisa,
-            por tu ternura, por tu locura,
-            por ser mi otra mitad, por ser esa mujer fuerte,
-            luchadora, que si se cae llora, pero se levanta
-            sin importar cuantos tropiezos más tenga,
-            que ama como una niña chiquita, que se queja
-            como una nena, que le gusta gritar y callar,
-            llorar y reír, dormir y estar despierta, a esa
-            nena que no termina de crecer aún, que siendo mi mayor
-            pareciera ser menor que yo, para mi chinita preciosa,
-            que no come cuando se siente triste y que
-            cuando está conmigo hasta me quita de mi comida o bebida
-            y nunca se llena, para esa nenita que le gusta gomitar,
-            hacer drama, renegar, pelear...
-            Eres mi persona favorita en el 🌎
+            Hoy celebro tu vida y agradezco cada segundo que paso a tu lado. Gracias por existir, por regalarme esa sonrisa que me cambia el día y por esa ternura que me desarma por completo. Eres mi otra mitad (aunque a veces me odies), esa mujer fuerte y luchadora que admiro profundamente; me encanta ver cómo, aunque a veces la vida te golpee y te conviertas en una <span class="highlight">llorona</span> por un ratito, siempre encuentras la fuerza para levantarte con más ganas, sin importar cuántos tropiezos haya en el camino.
+            <br><br>
+            Amo que seas mi <span class="highlight">nena</span> chiquita, esa que ama con una pureza que ya no existe en este mundo. Me fascina esa dualidad tuya: la mujer que enfrenta todo y la <span class="highlight">nenita</span> que se queja por las cosas más pequeñas, que le gusta gritar y callar, que ríe a carcajadas y llora con el alma, y que disfruta tanto de dormir abrazada a mí como de estar despierta planeando nuevas cosas. A veces me da mucha risa que, siendo mi mayor, pareces mucho menor que yo.
+            <br><br>
+            Para mi <span class="highlight">chinita</span> preciosa, la que me preocupa cuando no quiere comer nada por sentirse triste, pero que cuando está conmigo hasta me quita de mi propia comida o bebida y parece que nunca se llena. Me he enamorado de cada pedacito de ti, incluso de esa faceta dramática donde te gusta renegar, hacer berrinches y pelear por tonterías. Adoro verte incluso cuando pones <span class="highlight">cara de poto</span> porque estás enojada conmigo; muchas veces por tonterías.
+            <br><br>
+            No importa cuántos años pasen ni cuántos retos nos ponga la vida, siempre serás <span class="highlight">mi potito</span>, mi compañera y mi lugar seguro. Gracias por dejarme ser quien te cuide, quien te haga reír cuando no quieres y quien te acompañe en cada uno de tus sueños. Eres, sin duda alguna, mi persona favorita en todo el 🌎. 
+            <br><br>
+            Gracias por ser tú, por tu paciencia y por amarme así de bonito.
             <div class="age">Te amo infinito y más ♥</div>
         </div>
     </div>
@@ -233,10 +255,8 @@ function toggleMute() {
 
 function lanzarCorazones() {
     const emojis = ['♥'];
-    const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb', '#ff6347', '#ffa07a'];
     
-    // Crear 15 corazones por ciclo
-    for(let i = 0; i < 15; i++) {
+    for(let i = 0; i < 25; i++) {
         setTimeout(() => {
             let heart = document.createElement("div");
             heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -250,14 +270,10 @@ function lanzarCorazones() {
             heart.style.fontSize = size + "px";
             
             // Duración y delay aleatorios
-            const duration = Math.random() * 4 + 6;
+            const duration = Math.random() * 4 + 8;
             heart.style.animationDuration = duration + "s";
             heart.style.animationDelay = Math.random() * 2 + "s";
             
-            // Color opcional para algunos emojis
-            if (Math.random() > 0.5) {
-                heart.style.filter = `drop-shadow(0 0 10px ${colors[Math.floor(Math.random() * colors.length)]})`;
-            }
             
             document.body.appendChild(heart);
 
@@ -266,26 +282,25 @@ function lanzarCorazones() {
                 if (heart.parentNode) {
                     heart.remove();
                 }
-            }, (duration + 2) * 1000);
+            }, (duration + 2) * 10000);
         }, i * 200);
     }
     
-    // Añadir algunos destellos extra
-    for(let j = 0; j < 5; j++) {
+    for(let j = 0; j < 15; j++) {
         setTimeout(() => {
             let sparkle = document.createElement("div");
             sparkle.innerHTML = '♥';
             sparkle.classList.add("sparkle");
             sparkle.style.left = Math.random() * 95 + "vw";
             sparkle.style.fontSize = (Math.random() * 15 + 15) + "px";
-            sparkle.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            sparkle.style.animationDuration = (Math.random() * 3 + 5) + "s";
             document.body.appendChild(sparkle);
             
             setTimeout(() => {
                 if (sparkle.parentNode) {
                     sparkle.remove();
                 }
-            }, 7000);
+            }, 10000);
         }, j * 300);
     }
 }
